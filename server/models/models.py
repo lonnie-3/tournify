@@ -16,6 +16,7 @@ class Player(Base):
     __tablename__ = "players"
 
     id = Column(Integer, primary_key=True)
+    user_name = Column(String, ForeignKey("users.name"), nullable=False)
     name = Column(String, nullable=False)
     created_at = Column(DateTime, default=datetime.now()) 
 
@@ -31,8 +32,8 @@ class Game(Base):
 
     id = Column(Integer, primary_key=True)
     league_id = Column(Integer, ForeignKey("leagues.id"), nullable=False)
-    user_id1 = Column(Integer, ForeignKey("users.id"), nullable=False)
-    user_id2 = Column(Integer, ForeignKey("users.id"), nullable=False)
+    user_1 = Column(String, ForeignKey("users.name"), nullable=False)
+    user_2 = Column(String, ForeignKey("users.name"), nullable=False)
     created_at = Column(DateTime, default=datetime.now())
 
 class PlayerStats(Base):
@@ -54,6 +55,7 @@ class UserStats(Base):
     wins = Column(Integer, nullable=False)
     draws = Column(Integer, nullable=False)
     losses = Column(Integer, nullable=False)
+    goal_difference = Column(Integer, nullable=False)
     goals_scored_for = Column(Integer, nullable=False)
     goals_scored_against = Column(Integer, nullable=False)
     points = Column(Integer, nullable=False)

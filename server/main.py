@@ -4,10 +4,7 @@ from routes import all_routes
 from db.database import Database
 app = FastAPI()
 db = Database()
-
-@app.on_event("startup")
-async def startup():
-    await db.create_all()
+db.create_all()
 
 CORSMiddleware(
     app,

@@ -23,9 +23,13 @@ class PlayerCreate(PlayerBase):
 
 class PlayerOut(PlayerBase):
     id: int
+    user_name:str
     
     class Config:
         orm_mode = True
+
+class PlayersOut(PlayerBase):
+    id:int
 
 class LeagueBase(BaseModel):
     name: str

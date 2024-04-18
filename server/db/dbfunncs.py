@@ -1,5 +1,8 @@
 from .database import Database
 
-async def get_db():
-  async with Database() as db:
+def get_db():
+  db = Database()
+  try:
     yield db.get_session()
+  finally:
+    db.close()
